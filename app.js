@@ -10,24 +10,18 @@ getAPIButton.addEventListener('click', getFromAPI);
 // Get local text file data
 function getText() {
   fetch('test.txt')
-  .then(function(response) {
-    return response.text();
-  })
-  .then(function(data) {
+  .then(response => response.text())
+  .then(data => {
     document.getElementById('output').innerHTML = `<p>${data}</p>`;
   })
-  .catch(function(error) {
-    console.log(error)
-  });
+  .catch(error => console.log(error));
 }
 
 // Get local JSON file data
 function getJSON() {
   fetch('posts.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
+  .then(response => response.json())
+  .then(data => {
     const outputElem = document.getElementById('output');
     let outputData = '';
 
@@ -39,18 +33,14 @@ function getJSON() {
 
     outputElem.querySelector('ul').innerHTML = outputData;
   })
-  .catch(function(error) {
-    console.log(error)
-  });
+  .catch(error => console.log(error));
 }
 
 // Get from external API
 function getFromAPI() {
   fetch('https://api.github.com/users')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
+  .then(response => response.json())
+  .then(data => {
     const outputElem = document.getElementById('output');
     let outputData = '';
 
@@ -62,7 +52,5 @@ function getFromAPI() {
 
     outputElem.querySelector('ul').innerHTML = outputData;
   })
-  .catch(function(error) {
-    console.log(error)
-  });
+  .catch(error => console.log(error));
 }
